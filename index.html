@@ -12,14 +12,18 @@
 </head>
 
 <body class="loading">
-	<div class="swiper">
+	<div class="start__button">
+		Смотреть
+	</div>
+
+	<div class="swiper waiting">
 		<div class="swiper-wrapper">
 			<!-- Slides -->
 			<div class="swiper-slide">
-				<video autoplay class="video__background" loop>
+				<video  class="video__background" loop>
 					<source src="./assets/video/1.mp4" type="video/mp4">
 				</video>
-				<video autoplay loop>
+				<video  loop>
 					<source src="./assets/video/1.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -40,10 +44,10 @@
 				</video>
 			</div>
 			<div class="swiper-slide">
-				<video autoplay class="video__background" loop>
+				<video  class="video__background" loop>
 					<source src="./assets/video/1.mp4" type="video/mp4">
 				</video>
-				<video autoplay loop>
+				<video  loop>
 					<source src="./assets/video/1.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -76,10 +80,12 @@
 	<script src="./assets/js/index.js"></script>
 	<script type="module">
 		document.addEventListener("DOMContentLoaded", () => {
-			document.querySelector("body").classList.remove('loading');
-		});
-
-		const swiper = new Swiper('.swiper', {
+		document.querySelector("body").classList.remove('loading');
+	});
+	let swiper;
+	document.querySelector('.start__button').addEventListener("click", () => {
+		document.querySelector(".swiper").classList.remove("waiting");
+		swiper = new Swiper('.swiper', {
 			// Optional parameters
 			direction: 'vertical',
 			loop: true,
@@ -103,6 +109,8 @@
 				}
 			}
 		});
+		document.querySelector(".start__button").remove();
+	})
 	</script>
 </body>
 
