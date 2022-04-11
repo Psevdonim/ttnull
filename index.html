@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+	<title>Document</title>
+</head>
+
+<body class="loading">
+	<div class="swiper">
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			<div class="swiper-slide">
+				<video autoplay class="video__background" loop>
+					<source src="./assets/video/1.mp4" type="video/mp4">
+				</video>
+				<video autoplay loop>
+					<source src="./assets/video/1.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="swiper-slide">
+				<video class="video__background" loop>
+					<source src="./assets/video/2.mp4" type="video/mp4">
+				</video>
+				<video loop>
+					<source src="./assets/video/2.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="swiper-slide">
+				<video class="video__background" loop>
+					<source src="./assets/video/3.mp4" type="video/mp4">
+				</video>
+				<video loop>
+					<source src="./assets/video/3.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="swiper-slide">
+				<video autoplay class="video__background" loop>
+					<source src="./assets/video/1.mp4" type="video/mp4">
+				</video>
+				<video autoplay loop>
+					<source src="./assets/video/1.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="swiper-slide">
+				<video class="video__background" loop>
+					<source src="./assets/video/2.mp4" type="video/mp4">
+				</video>
+				<video loop>
+					<source src="./assets/video/2.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="swiper-slide">
+				<video class="video__background" loop>
+					<source src="./assets/video/3.mp4" type="video/mp4">
+				</video>
+				<video loop>
+					<source src="./assets/video/3.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+	</div>
+	<div class="lds-ring">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	<script src="./assets/js/index.js"></script>
+	<script type="module">
+		document.addEventListener("DOMContentLoaded", () => {
+			document.querySelector("body").classList.remove('loading');
+		});
+
+		const swiper = new Swiper('.swiper', {
+			// Optional parameters
+			direction: 'vertical',
+			loop: true,
+			slidesPerView: 1,
+			height: window.innerHeight,
+			on: {
+				slideChange: function () {
+					setTimeout(() => {
+						const slidePrev = document.querySelectorAll('.swiper-slide-prev video');
+						const slideActive = document.querySelectorAll(".swiper-slide-active video");
+						const slideNext = document.querySelectorAll('.swiper-slide-next video');
+
+						for (let i = 0; i <= 1; i++) {
+							slidePrev[i].pause();
+							slideNext[i].pause();
+							slideActive[i].play();
+						}
+						slideActive[0].volume = 0;
+					})
+
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
